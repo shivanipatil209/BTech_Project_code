@@ -1,0 +1,17 @@
+<html lang="en">
+<body>
+<div style = "max-width:470px;  margin-top:5% ;margin-left:20%">
+<center>
+
+<form method="post">
+{% csrf_token %} 
+<h4>Query Entered: <strong>{{ search_words }}</strong></h4>
+<a href ="{% url 'predict' %}" > Check Analysis </a>
+</form>
+<br>
+<br>
+<br>
+</body>
+</center>
+</div>
+</html>

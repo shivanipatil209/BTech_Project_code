@@ -1,0 +1,16 @@
+<html lang="en">
+<body>
+<div style = "max-width:470px;  margin-top:5% ;margin-left:20%">
+<center>
+
+<form method="post", action="{% url 'lr' %}">
+{% csrf_token %} 
+<h2>Choose machine learning model: </h2>
+<input type="submit" name="logistic_regression" value="Logistic Regression" class="btn btn-success">
+</form>
+
+
+</body>
+</center>
+</div>
+</html>
