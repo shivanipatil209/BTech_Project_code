@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from demo_app.forms import SearchForm
+from analysis.forms import SearchForm
 
 from .forms import SearchForm
 from django.template import loader
@@ -21,27 +21,6 @@ from .models import usersignup
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 
-def user_signup(request):
-    if request.method == 'POST':
-        if request.POST.get('username') and request.POST.get('pswd'):
-            saverecord = usersignup()
-            saverecord.username=request.POST.get('username')
-            saverecord.pswd = request.POST.get('pswd')
-            
-            
-             # create sqlalchemy engine
-            engine1 = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
-                       .format(user="root",
-                               pw="",
-                               db="text_data")) 
-
-            query =  "INSERT INTO user_table (username, password) VALUES (%s,%s)"
-            engine1.execute(query,(saverecord.username,saverecord.pswd))
-            return render(request,'demo_app/signup/signup.html')
-            
-    else:
-        return render(request,'demo_app/signup/signup.html')
-
 def search(request):
    if request.method == "POST":
       #Get the posted form
@@ -58,17 +37,17 @@ def search(request):
          #calling function from other .py file
          collect_tweets(search_words)
 
-         template = loader.get_template('tweets.html')
+         template = loader.get_template('analysis/predict.html')
         
          return HttpResponse(template.render(context, request))
    else:
       MySearchForm = SearchForm()
 
-   return render(request,'home.html',{'form': MySearchForm})
+   return render(request,'analysis/home1.html',{'form': MySearchForm})
 
 
 def predict(request):
-       return render(request,"predict.html")
+       return render(request,"analysis/predict.html")
 
 def model(request):
    
@@ -94,7 +73,7 @@ def model(request):
    data=[positive_count,negative_count]
    print(data)
    
-   return render(request, 'results.html', {
+   return render(request, 'analysis/results.html', {
         'labels': labels,
         'data': data,
     })

@@ -1,59 +1,30 @@
+{% extends "basic_app/base.html" %}
 <html> 
-  <head> 
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>   
+{% block body_block %}
 
-    <style> 
-      body { 
-        margin: 0; 
-        background-color: #343634;
-      } 
-      nav { 
-        width: 100%; 
-        background-color: #343634;
-      } 
-      ul { 
-        margin: 0; 
-        padding: 0; 
-      } 
-      li { 
-        float: left; 
-        margin: 0; 
-        padding-top: 10px; 
-        padding-bottom: 10px; 
-        font-size: 20px; 
-        width: 12%; 
-        list-style: none; 
-        text-align: center; 
-      } 
-      a { 
-        color: rgb(44, 48, 44); 
-        text-decoration: none; 
-      } 
-      img { 
-        width: 80%; 
-      } 
-      
-      #blankSpace { 
-        width: 16%; 
-        height: 34px; 
-      } 
-    </style> 
-  </head> 
-  <body> 
-    <nav> 
-      
-      <ul> 
-
-      
-        <li><a href="/login">Login</a></li> 
-        <li><a href="/signup">Signup</a></li> 
-      
-      </ul> 
-    </nav> 
-  </body> 
-</html> 
-
+{% if messages %}
+<ul class="messages">
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+    </div>
+    </div>
+{% endfor %}
+</ul>
+{% endif %}
 <div class="signup-page">
-    <body>
+
       <div class="form">
         <form class="register-form" method='POST'>
           {% csrf_token %}
@@ -61,21 +32,20 @@
           <input type="password" placeholder="Password" name="pswd"/>
           <input type="password" placeholder="Confirm password"/>
           <button>Signup</button>
-          <p class="message">Already registered? <a href="#">Sign In</a></p>
+          <p class="message">Already registered? <a href="/login">Sign In</a></p>
         </form>
       </div>
       </div>
-      </body>
-    </div>
+    
   
-  
+   
   <style>
   
   /* @import url(https://fonts.googleapis.com/css?family=Roboto:300); */
   
   
   
-  .login-page {
+  .signup-page {
     width: 360px;
     padding: 8% 0 0;
     margin: auto;
@@ -118,9 +88,7 @@
     transition: all 0.3 ease;
     cursor: pointer;
   }
-  .form button:hover,.form button:active,.form button:focus {
-    background: #eaecea;
-  }
+ 
   .form .message {
     margin: 15px 0 0;
     color: #b3b3b3;
@@ -136,7 +104,6 @@
   .container {
     position: relative;
     z-index: 1;
-    max-width: 300px;
     margin: 0 auto;
   }
   .container:before, .container:after {
@@ -174,12 +141,14 @@
   
   </style> 
   
+ <script>
+
+$('.message a').click(function(){
+$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+ });
+
+</script> 
   
-  <script>
-  
-  $('.message a').click(function(){
-  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-   });
-  
-  </script> 
-  
+{% endblock %}
+</body>
+</html>

@@ -4,7 +4,7 @@ import os
 import pickle
 
 class DemoAppConfig(AppConfig):
-    name = 'demo_app'
+    name = 'analysis'
     # create path to models
     model_path = os.path.join(settings.MODELS, 'lr_classifier.sav')
     transformer_path =  os.path.join(settings.MODELS, 'transformer.pkl')
