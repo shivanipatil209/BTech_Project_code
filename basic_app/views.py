@@ -106,7 +106,7 @@ def user_login(request):
 
             if is_user==1:
                 messages.success(request, "Login Successfull" )
-                return redirect('search')
+                return redirect('predict')
                 print("Successfull login")
 
             else:

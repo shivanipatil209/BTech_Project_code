@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,33 +10,27 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container-lg">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/analysis/predict">Real Time Analysis</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-
+            
                 <li class="nav-item">
-                    <a class="navbar-brand" href="/userGuide">User Guide</a>
+                    <a class="navbar-brand" href="/analysis/past_predict">Past Analysis</a>
                 </li>
                 <li class="nav-item">
-                    <a class="navbar-brand" href="/contactUs">Contact Us</a>
+                    <a class="navbar-brand" href="#">Models Comparision</a>
                 </li>
-                <li class="nav-item">
-                    <a class="navbar-brand" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="navbar-brand" href="/signup">signup</a>
-                </li>
-
+                
             </ul>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-lg">
     {% block body_block %}
     {% endblock %}
     </div>
